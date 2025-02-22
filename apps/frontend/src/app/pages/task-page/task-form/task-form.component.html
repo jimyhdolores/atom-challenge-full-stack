@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{ data ? 'Editar' : 'Nueva' }} Tarea</h2>
+
+<mat-dialog-content>
+	<form [formGroup]="taskForm" class="task-form__content">
+		<mat-form-field appearance="fill" class="task-form__field">
+			<mat-label>Título</mat-label>
+			<input matInput formControlName="title" />
+			@if (taskForm.get('title')?.hasError('required') && taskForm.get('title')?.touched) {
+			<mat-error>El título es requerido</mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field appearance="fill" class="task-form__field">
+			<mat-label>Descripción</mat-label>
+			<textarea matInput formControlName="description" rows="4"></textarea>
+			@if (taskForm.get('description')?.hasError('required') && taskForm.get('description')?.touched) {
+			<mat-error>La descripción es requerida</mat-error>
+			}
+		</mat-form-field>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="task-form__actions">
+	<button mat-button mat-dialog-close class="task-form__button">Cancelar</button>
+	<button
+		mat-raised-button
+		color="primary"
+		[disabled]="taskForm.invalid"
+		(click)="onSubmit()"
+		class="task-form__button"
+	>
+		{{ data ? 'Actualizar' : 'Crear' }}
+	</button>
+</mat-dialog-actions>

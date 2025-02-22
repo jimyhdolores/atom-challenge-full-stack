@@ -1,0 +1,29 @@
+.login {
+	&__container {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #f5f5f5;
+	}
+
+	&__card {
+		padding: 2rem;
+		width: 100%;
+		max-width: 400px;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	&__field {
+		width: 100%;
+	}
+
+	&__submit-button {
+		width: 100%;
+	}
+}

@@ -1,0 +1,62 @@
+.task-page {
+	&__container {
+		padding: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2rem;
+		@media (max-width: 589px) {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__header-content {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		flex-direction: column;
+		@media (max-width: 589px) {
+			align-items: center;
+		}
+	}
+
+	&__user-email {
+		color: #3f51b5;
+		font-weight: 500;
+	}
+
+	&__header-actions {
+		display: flex;
+		gap: 1rem;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 1rem;
+	}
+
+	&__card-actions {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px;
+	}
+
+	&__task-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	&__no-tasks {
+		text-align: center;
+		grid-column: 1 / -1;
+		color: #666;
+		font-size: 1.2rem;
+	}
+}

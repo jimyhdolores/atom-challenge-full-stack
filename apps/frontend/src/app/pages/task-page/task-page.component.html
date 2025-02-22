@@ -1,0 +1,44 @@
+<div class="task-page__container">
+	<header class="task-page__header">
+		<div class="task-page__header-content">
+			<h1>Mis Tareas</h1>
+			@if (currentUser$ | async; as user) {
+			<span class="task-page__user-email">user: {{ user.email }}</span>
+			}
+		</div>
+		<div class="task-page__header-actions">
+			<button mat-raised-button color="primary" (click)="openTaskForm()">Nueva Tarea</button>
+			<button mat-button (click)="logout()">Cerrar Sesión</button>
+		</div>
+	</header>
+
+	<div class="task-page__grid">
+		@for (task of tasks; track task.id) {
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>{{ task.title }}</mat-card-title>
+				<mat-card-subtitle>Creada: {{ task.createdAt | date : 'short' }}</mat-card-subtitle>
+			</mat-card-header>
+
+			<mat-card-content>
+				<p>{{ task.description }}</p>
+			</mat-card-content>
+
+			<mat-card-actions class="task-page__card-actions">
+				<mat-checkbox [checked]="task.completed" (change)="toggleTaskStatus(task)"> Completada </mat-checkbox>
+
+				<div class="task-page__task-actions">
+					<button mat-icon-button (click)="editTask(task)">
+						<mat-icon>edit</mat-icon>
+					</button>
+					<button mat-icon-button color="warn" (click)="deleteTask(task)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</div>
+			</mat-card-actions>
+		</mat-card>
+		} @empty {
+		<p class="task-page__no-tasks">No hay tareas pendientes</p>
+		}
+	</div>
+</div>
