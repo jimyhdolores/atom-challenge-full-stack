@@ -1,3 +1,3 @@
 export const environment = {
-	apiUrl: 'http://localhost:3000',
+	apiUrl: 'https://vercel-backend-dh8qx8tju-jimyhdolores-projects.vercel.app',
 };

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "challengue-atom"
+  },
+  "targets": {
+    "challengue-atom": {
+      "hosting": {
+        "frontend": [
+          "challengue-atom"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

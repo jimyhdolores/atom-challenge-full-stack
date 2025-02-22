@@ -1,84 +1,102 @@
-# Turborepo starter
+# Proyecto Full Stack - Gestión de Tareas
 
-This Turborepo starter is maintained by the Turborepo core team.
+## Descripción General
 
-## Using this example
+Este proyecto implementa una aplicación de gestión de tareas (Todo App) utilizando una arquitectura moderna full stack, organizada como un monorepo para facilitar el desarrollo y mantenimiento.
 
-Run the following command:
+## Estructura del Proyecto
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+El proyecto está organizado como un monorepo con la siguiente estructura:
 
 ```
-cd my-turborepo
-pnpm build
+/
+├── apps/
+│   ├── frontend/    # Frontend en Angular
+│   └── backend/     # Backend en Node.js
 ```
 
-### Develop
+## Tecnologías Utilizadas
 
-To develop all apps and packages, run the following command:
+### Frontend
 
+- Angular 19.1 como framework principal
+- Angular Material para la interfaz de usuario
+- RxJS para programación reactiva
+- TypeScript para tipado estático
+
+### Backend
+
+- Node.js como runtime
+- Express.js como framework web
+- Firebase Admin SDK para persistencia de datos
+- TypeScript para desarrollo tipado
+
+## Decisiones de Diseño
+
+### Arquitectura
+
+- **Monorepo**: Gestionado con Turborepo para optimizar el desarrollo y la construcción
+- **Clean Architecture**: Implementación de capas (presentación, aplicación, dominio, infraestructura)
+- **Arquitectura por Capas**: Clara separación entre la lógica de negocio, acceso a datos y presentación
+
+### Despliegue
+
+- **Frontend**: Desplegado en Firebase Hosting
+- **Backend**: Desplegado en Vercel por:
+  - Facilidad de configuración y despliegue
+  - Integración nativa con repositorios Git
+  - Capa gratuita generosa
+  - No requiere configuración de tarjeta de crédito (a diferencia de Cloud Functions)
+  - Excelente rendimiento y escalabilidad automática
+
+### Seguridad
+
+- Implementación de autenticación basada en email
+- Validación de datos en frontend y backend
+- Interceptores HTTP para manejo de tokens
+- CORS configurado para entornos específicos
+
+## Características Principales
+
+- Gestión completa de tareas (CRUD)
+- Autenticación de usuarios
+- Interfaz responsiva y moderna
+- Persistencia de datos en Firebase
+- Validaciones en tiempo real
+
+## Configuración del Proyecto
+
+### Requisitos Previos
+
+- Node.js (v14 o superior)
+- PNPM como gestor de paquetes
+- Firebase CLI (para despliegue del frontend)
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone [url-del-repositorio]
+
+# Instalar dependencias
+pnpm install
+
+# Configurar variables de entorno
+cp apps/backend/.env.example apps/backend/.env
+cp apps/frontend/.env.example apps/frontend/.env
+
+# Iniciar en modo desarrollo
+pnpm run dev
 ```
-cd my-turborepo
-pnpm dev
+
+## Scripts Disponibles
+
+```json
+{
+	"build": "turbo build",
+	"dev": "turbo dev",
+	"lint": "turbo lint",
+	"check-types": "turbo check-types",
+	"deploy:frontend": "firebase deploy --only hosting:frontend"
+}
 ```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

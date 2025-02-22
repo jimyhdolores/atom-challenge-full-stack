@@ -21,6 +21,10 @@
 			"persistent": true,
 			"dependsOn": ["^build"]
 		},
+		"deploy": {
+			"dependsOn": ["build"],
+			"outputs": []
+		},
 		"backend#dev": {
 			"dependsOn": ["build"]
 		},

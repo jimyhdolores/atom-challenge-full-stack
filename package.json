@@ -8,7 +8,8 @@
 		"check-types": "turbo check-types",
 		"start:backend": "turbo start --filter=backend",
 		"start:frontend": "turbo start --filter=frontend",
-		"start:all": "turbo run start --parallel --filter=frontend --filter=backend"
+		"start:all": "turbo run start --parallel --filter=frontend --filter=backend",
+		"deploy:frontend": "firebase target:apply hosting frontend challengue-atom && turbo run build --filter=frontend && firebase deploy --only hosting:frontend"
 	},
 	"devDependencies": {
 		"turbo": "latest"
